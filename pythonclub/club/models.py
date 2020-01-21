@@ -13,8 +13,8 @@ class Meeting(models.Model):
         verbose_name_plural="meetings"
 
 class MeetingMinutes(models.Model):
-    meetingID
-    attendance
+    meetingID=models.IntegerField()
+    attendance=models.BooleanField()
     minutesText=models.TextField()
 
     class Meta:
@@ -23,10 +23,10 @@ class MeetingMinutes(models.Model):
 
 class Resource(models.Model):
     resourceName=models.CharField(max_length=255)
-    resourceType
-    url
+    resourceType=models.CharField(max_length=255)
+    url=models.SlugField()
     dateEntered=models.TimeDateField()
-    userID
+    userID=models.IntegerField()
     description=models.CharField(max_length=255)
 
     class Meta:
@@ -35,11 +35,11 @@ class Resource(models.Model):
 
 class Event(models.Model):
     eventTitle=models.CharField(max_length=255)
-    location
+    location=models.CharField(max_length=255)
     date=models.TimeDateField()
     time=models.TimeDateField()
     description=models.TextField()
-    userID
+    userID=models.IntegerField()
 
     class Meta:
         db_table="event"
