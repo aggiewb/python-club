@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Meeting(models.Model):
-    meetingTitle=models.Charfield(max_length=255)
-    meetingDate
-    meetingTime
-    location=models.Charfield(max_length=255)
-    agenda=models.Charfield(max_length=255)
+    meetingTitle=models.CharField(max_length=255)
+    meetingDate=models.DateTimeField()
+    meetingTime=models.DateTimeField()
+    location=models.CharField(max_length=255)
+    agenda=models.CharField(max_length=255)
 
     class Meta:
         db_table="meeting"
@@ -18,26 +18,26 @@ class MeetingMinutes(models.Model):
     minutesText=models.TextField()
 
     class Meta:
-        db_table="meetingminutes"
-        verbose_name_plural="meetingminutes"
+        db_table="meeting_minutes"
+        verbose_name_plural="meeting_minutes"
 
 class Resource(models.Model):
-    resourceName=models.Charfield(max_length=255)
+    resourceName=models.CharField(max_length=255)
     resourceType
     url
-    dateEntered
+    dateEntered=models.TimeDateField()
     userID
-    description=models.Charfield(max_length=255)
+    description=models.CharField(max_length=255)
 
     class Meta:
         db_table="resource"
         verbose_name_plural="resources"
 
 class Event(models.Model):
-    eventTitle=models.Charfield(max_length=255)
+    eventTitle=models.CharField(max_length=255)
     location
-    date
-    time
+    date=models.TimeDateField()
+    time=models.TimeDateField()
     description=models.TextField()
     userID
 
