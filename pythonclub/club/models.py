@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Meeting():
+class Meeting(models.Model):
 
-class MeetingMinutes():
+class MeetingMinutes(models.Model):
 
-class Resource():
+class Resource(models.Model):
 
-class Event():
+class Event(models.Model):
