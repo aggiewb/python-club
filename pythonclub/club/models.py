@@ -13,8 +13,8 @@ class Meeting(models.Model):
         verbose_name_plural="meetings"
 
 class MeetingMinutes(models.Model):
-    meetingID=models.IntegerField()
-    attendance=models.BooleanField()
+    meetingID=models.ForeignKey("meetingID", on_delete=models.CASCADE)
+    attendance=models.ManyToManyField(User)
     minutesText=models.TextField()
 
     class Meta:
@@ -26,7 +26,7 @@ class Resource(models.Model):
     resourceType=models.CharField(max_length=255)
     url=models.SlugField()
     dateEntered=models.DateTimeField()
-    userID=models.IntegerField()
+    userID=models.ForeignKey(User, on_delete=models.CASCADE)
     description=models.CharField(max_length=255)
 
     class Meta:
