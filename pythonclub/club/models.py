@@ -16,7 +16,7 @@ class Meeting(models.Model):
         verbose_name_plural="meetings"
 
 class MeetingMinutes(models.Model):
-    meetingID=models.ForeignKey("meetingID", on_delete=models.CASCADE)
+    meetingID=models.ForeignKey(Meeting, on_delete=models.CASCADE)
     attendance=models.ManyToManyField(User)
     minutesText=models.TextField()
 
