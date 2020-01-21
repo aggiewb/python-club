@@ -8,6 +8,9 @@ class Meeting(models.Model):
     location=models.CharField(max_length=255)
     agenda=models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.meetingTitle, self.meetingDate, self.meetingTime, self.location, self.agenda
+
     class Meta:
         db_table="meeting"
         verbose_name_plural="meetings"
@@ -16,6 +19,9 @@ class MeetingMinutes(models.Model):
     meetingID=models.ForeignKey("meetingID", on_delete=models.CASCADE)
     attendance=models.ManyToManyField(User)
     minutesText=models.TextField()
+
+    def __str__(self):
+        return self.attendance, self.minutesText
 
     class Meta:
         db_table="meeting_minutes"
@@ -29,6 +35,9 @@ class Resource(models.Model):
     userID=models.ForeignKey(User, on_delete=models.CASCADE)
     description=models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.resourceName, self.resourceType, self.url, self.dateEntered, self.description
+
     class Meta:
         db_table="resource"
         verbose_name_plural="resources"
@@ -40,6 +49,9 @@ class Event(models.Model):
     time=models.DateTimeField()
     description=models.TextField()
     userID=models.IntegerField()
+
+    def __str__(self):
+        return self.eventTitle, self.location, self.date, self.time, self.description
 
     class Meta:
         db_table="event"
