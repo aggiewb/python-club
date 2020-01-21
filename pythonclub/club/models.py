@@ -25,7 +25,7 @@ class Resource(models.Model):
     resourceName=models.CharField(max_length=255)
     resourceType=models.CharField(max_length=255)
     url=models.SlugField()
-    dateEntered=models.TimeDateField()
+    dateEntered=models.DateTimeField()
     userID=models.IntegerField()
     description=models.CharField(max_length=255)
 
@@ -36,8 +36,8 @@ class Resource(models.Model):
 class Event(models.Model):
     eventTitle=models.CharField(max_length=255)
     location=models.CharField(max_length=255)
-    date=models.TimeDateField()
-    time=models.TimeDateField()
+    date=models.DateTimeField()
+    time=models.DateTimeField()
     description=models.TextField()
     userID=models.IntegerField()
 
