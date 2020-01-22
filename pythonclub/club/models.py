@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 class Meeting(models.Model):
     meetingTitle=models.CharField(max_length=255)
-    meetingDate=models.DateTimeField()
-    meetingTime=models.DateTimeField()
+    meetingDate=models.DateField()
+    meetingTime=models.TimeField()
     location=models.CharField(max_length=255)
     agenda=models.CharField(max_length=255)
 
@@ -30,9 +30,9 @@ class MeetingMinutes(models.Model):
 class Resource(models.Model):
     resourceName=models.CharField(max_length=255)
     resourceType=models.CharField(max_length=255)
-    url=models.SlugField()
-    dateEntered=models.DateTimeField()
-    userID=models.ForeignKey(User, on_delete=models.CASCADE)
+    url=models.URLField()
+    dateEntered=models.DateField()
+    userID=models.ForeignKey(User, on_delete=models.DO_NOTHING)
     description=models.CharField(max_length=255)
 
     def __str__(self):
@@ -45,8 +45,8 @@ class Resource(models.Model):
 class Event(models.Model):
     eventTitle=models.CharField(max_length=255)
     location=models.CharField(max_length=255)
-    date=models.DateTimeField()
-    time=models.DateTimeField()
+    date=models.DateField()
+    time=models.TimeField()
     description=models.TextField()
     userID=models.IntegerField()
 
