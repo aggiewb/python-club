@@ -9,5 +9,14 @@
         <th>User ID</th>
         <th>Description</th>
     </tr>
+    {% for data in type_list %}
+    <tr>
+        <td>{{ data.resourceType }}</td>
+        <td>{{ data.url }}</td>
+        <td>{{ data.dateEntered }}</td>
+        <td>{{ data.userID }}</td>
+        <td>{{ data.description }}</td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock %}
