@@ -8,5 +8,13 @@
         <th>Location</th>
         <th>Agenda</th>
     </tr>
+    {% for data in type_list %}
+    <tr>
+        <td>{{ data.meetingDate }}</td>
+        <td>{{ data.meetingTime }}</td>
+        <td>{{ data.location }}</td>
+        <td>{{ data.agenda }}</td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock %}
