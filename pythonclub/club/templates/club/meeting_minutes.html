@@ -7,5 +7,12 @@
         <th>Attendance</th>
         <th>Notes</th>
     </tr>
+    {% for data in type_list %}
+    <tr>
+        <td>{{ data.meetingID }}</td>
+        <td>{{ data.attendance }}</td>
+        <td>{{ data.minutesText }}</td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock}
