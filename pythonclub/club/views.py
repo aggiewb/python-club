@@ -6,21 +6,21 @@ def index (request):
     return render(request, 'club/index.html')
 
 def meeting(request):
-    type_list = Meeting.objects.all()
-    return render(request, 'club/meeting.html', {'type_list' : type_list})
+    meetings = Meeting.objects.all()
+    return render(request, 'club/meeting.html', {'meeting' : meeting})
 
 def meetingID(request, id):
-    meeting = get_object_or_404(Meeting, pk=id)
+    meetingID = get_object_or_404(Meeting, pk=id)
     return render(request, 'club/meetingID.html', {'meetingID': meetingID})
 
 def meetingMinutes(request):
-    type_list = MeetingMinutes.objects.all()
-    return render(request, 'club/meeting_minutes.html', {'type_list' : type_list})
+    meetingMinutes = MeetingMinutes.objects.all()
+    return render(request, 'club/meeting_minutes.html', {'meetingMinutes' : meetingMinutes})
 
 def resource(request):
-    type_list = Resource.objects.all()
-    return render(request, 'club/resource.html', {'type_list' : type_list})
+    resource = Resource.objects.all()
+    return render(request, 'club/resource.html', {'resource' : resource})
 
 def event(request):
-    type_list = Event.objects.all()
-    return render(request, 'club/event.html', {'type_list' : type_list}) 
+    event = Event.objects.all()
+    return render(request, 'club/event.html', {'event' : event}) 
