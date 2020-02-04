@@ -8,7 +8,7 @@
     </tr>
     {% for data in meeting %}
     <tr>
-        <td>{{ data.meetingTitle }}</td>
+        <td><a href="{% url 'meeting_details' id= data.id %}">{{ data.meetingTitle }}</td>
         <td>{{ data.meetingDate }}</td>
     </tr>
     {% endfor %}
