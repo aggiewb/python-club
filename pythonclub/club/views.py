@@ -6,16 +6,13 @@ def index (request):
     return render(request, 'club/index.html')
 
 def meeting(request):
-    meetings = Meeting.objects.all()
+    meeting = Meeting.objects.all()
     return render(request, 'club/meeting.html', {'meeting' : meeting})
 
-def meetingID(request, id):
-    meetingID = get_object_or_404(Meeting, pk=id)
-    return render(request, 'club/meetingID.html', {'meetingID': meetingID})
-
-def meetingMinutes(request):
-    meetingMinutes = MeetingMinutes.objects.all()
-    return render(request, 'club/meeting_minutes.html', {'meetingMinutes' : meetingMinutes})
+def meetingDetails(request, id):
+    meeting = get_object_or_404(Meeting, pk=id)
+    meetingMinutes = MeetingMinutes.objects.filter(meetingID=id)
+    return render(request, 'club/meeting_details.html', context={'meeting' : meeting, 'meetingMinutes' : meetingMinutes,})
 
 def resource(request):
     resource = Resource.objects.all()
