@@ -9,7 +9,7 @@ class MeetingTest(TestCase):
         location=Meeting(location="Community Center")
         agenda=Meeting(agenda="Vote new board members")
         self.assertEqual(str(meetingTitle), meetingTitle.meetingTitle)
-        self.assertEqual(str(meeetingDate), meetingDate.meetingDate)
+        self.assertEqual(str(meetingDate), meetingDate.meetingDate)
         self.assertEqual(str(meetingTime), meetingTime.meetingTime)
         self.assertEqual(str(location), location.location)
         self.assertEqual(str(agenda), agenda.agenda)
