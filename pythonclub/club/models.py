@@ -9,7 +9,7 @@ class Meeting(models.Model):
     agenda=models.CharField(max_length=255)
 
     def __str__(self):
-        return '{} {} {} {} {}'.format(self.meetingTitle, self.meetingDate, self.meetingTime, self.location, self.agenda)
+        return '%s %s %s %s %s'%(self.meetingTitle, self.meetingDate, self.meetingTime, self.location, self.agenda)
 
     class Meta:
         db_table="meeting"
@@ -21,7 +21,7 @@ class MeetingMinutes(models.Model):
     minutesText=models.TextField()
 
     def __str__(self):
-        return self.attendance, self.minutesText
+         return '%s %s'%(self.attendance, self.minutesText)
 
     class Meta:
         db_table="meeting_minutes"
@@ -36,7 +36,7 @@ class Resource(models.Model):
     description=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.resourceName, self.resourceType, self.url, self.dateEntered, self.description
+         return '%s %s %s %s %s'%(self.resourceName, self.resourceType, self.url, self.dateEntered, self.description)
 
     class Meta:
         db_table="resource"
@@ -51,7 +51,7 @@ class Event(models.Model):
     userID=models.IntegerField()
 
     def __str__(self):
-        return self.eventTitle, self.location, self.date, self.time, self.description
+         return '%s %s %s %s %s'%(self.eventTitle, self.location, self.date, self.time, self.description)
 
     class Meta:
         db_table="event"
