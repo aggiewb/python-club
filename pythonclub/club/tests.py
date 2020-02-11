@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event
 from django.urls import reverse
+from .views import index, meeting, meetingDetails, resource, event
 
 
 class MeetingTest(TestCase):
