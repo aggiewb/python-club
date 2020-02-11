@@ -1,5 +1,7 @@
 from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event
+from django.urls import reverse
+
 
 class MeetingTest(TestCase):
     def test_string(self):
@@ -46,6 +48,8 @@ class EventTest(TestCase):
         self.assertEqual(str(date), date.date)
         self.assertEqual(str(time), time.time)
         self.assertEqual(str(description), description.description)
+
+
 
 
 
