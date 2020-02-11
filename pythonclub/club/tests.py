@@ -21,5 +21,19 @@ class MeetingMinutesTest(TestCase):
         self.assertEqual(str(attendance), attendance.attendance)
         self.assertEqual(str(minutesText), minutesText.minutesText)
 
+class ResourceTest(TestCase):
+    def test_string(self):
+        resourceName=Resource(resourceName="Offical Documentation")
+        resourceType=Resource(resourceType="Django")
+        url=Resource(url="https://docs.djangoproject.com/en/3.0/")
+        dateEntered=Resource(dateEntered="2020-09-02")
+        description=Resource(description="This is the offical documentation on Django")
+        self.assertEqual(str(resourceName), resourceName.resourceName)
+        self.assertEqual(str(resourceType), resourceType.resourceType)
+        self.assertEqual(str(url), url.url)
+        self.assertEqual(str(dateEntered), dateEntered.dateEntered)
+        self.assertEqual(str(description), description.description)
+
+
 
 
