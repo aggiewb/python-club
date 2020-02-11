@@ -9,7 +9,7 @@ class Meeting(models.Model):
     agenda=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.meetingTitle, self.meetingDate, self.meetingTime, self.location, self.agenda
+        return '{} {} {} {} {}'.format(self.meetingTitle, self.meetingDate, self.meetingTime, self.location, self.agenda)
 
     class Meta:
         db_table="meeting"
