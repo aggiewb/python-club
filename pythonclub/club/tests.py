@@ -14,3 +14,12 @@ class MeetingTest(TestCase):
         self.assertEqual(str(location), location.location)
         self.assertEqual(str(agenda), agenda.agenda)
 
+class MeetingMinutesTest(TestCase):
+    def test_string(self):
+        attendance=MeetingMinutes(attendance="Bob Boberton")
+        minutesText=MeetingMinutes(minutesText="Susie Sue was voted in as board president")
+        self.assertEqual(str(attendance), attendance.attendance)
+        self.assertEqual(str(minutesText), minutesText.minutesText)
+
+
+
