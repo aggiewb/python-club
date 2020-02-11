@@ -49,6 +49,10 @@ class EventTest(TestCase):
         self.assertEqual(str(time), time.time)
         self.assertEqual(str(description), description.description)
 
+class IndexTest(TestCase):
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('index'))
+        self.assertEqual(response.status_code, 200)
 
 
 
