@@ -34,6 +34,19 @@ class ResourceTest(TestCase):
         self.assertEqual(str(dateEntered), dateEntered.dateEntered)
         self.assertEqual(str(description), description.description)
 
+class EventTest(TestCase):
+    def test_string(self):
+        eventTitle=Event(eventTitle="PyDay")
+        location=Event(location="Programmers Ale House")
+        date=Event(date="2020-02-21")
+        time=Event(time="06:30 PM")
+        description=Event(description="A day to celebrate Python!")
+        self.assertEqual(str(eventTitle), eventTitle.eventTitle)
+        self.assertEqual(str(location), location.location)
+        self.assertEqual(str(date), date.date)
+        self.assertEqual(str(time), time.time)
+        self.assertEqual(str(description), description.description)
+
 
 
 
