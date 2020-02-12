@@ -54,6 +54,16 @@ class ResourceViewTest(TestCase):
         response = self.client.get(reverse('resource'))
         self.assertEqual(response.status_code, 200)
 
+class MeetingViewTest(TestCase):
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('meeting'))
+        self.assertEqual(response.status_code, 200)
+
+class EventViewTest(TestCase):
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('event'))
+        self.assertEqual(response.status_code, 200)
+
 
 
 
