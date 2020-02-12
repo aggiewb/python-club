@@ -73,6 +73,14 @@ class EventViewTest(TestCase):
         response = self.client.get(reverse('event'))
         self.assertEqual(response.status_code, 200)
 
+class MeetingDetailsViewTest(TestCase):
+    def setUp(self):
+        self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!') 
+
+    def test_meeting_details_success(self):
+        response = self.client.get(reverse('meeting_details', args=(self.meeting.id,)))
+        self.assertEqual(response.status_code, 200)
+
 
 
 
