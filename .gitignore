@@ -3,3 +3,5 @@ __pycache__
 **/*.pyc
 *.pyc
 *.env
+pythonclub/pythonclub/__pycache__/settings.cpython-38.pyc
+pythonclub/pythonclub/__pycache__/urls.cpython-38.pyc
