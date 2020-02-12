@@ -8,6 +8,9 @@ class MeetingTest(TestCase):
     def test_string(self):
         meetingTitle=Meeting(meetingTitle='Annual Meeting')
         self.assertEqual(str(meetingTitle), meetingTitle.meetingTitle)
+ 
+    def test_table(self):
+        self.assertEqual(str(Meeting._meta.db_table), 'meeting')
     
     def setUp(self):
        meeting=Meeting(agenda='Voting on new club board members', location='Community Center', meetingDate='2020-06-23', meetingTime='03:00 pm')
@@ -16,9 +19,6 @@ class MeetingTest(TestCase):
     def test_type(self):
         meeting = self.setUp()
         self.assertEqual(str(meeting.agenda), 'Voting on new club board members')
-    
-    def test_table(self):
-        self.assertEqual(str(Meeting._meta.db_table), 'meeting')
 
 class MeetingMinutesTest(TestCase):
     def test_string(self):
@@ -43,7 +43,6 @@ class EventTest(TestCase):
 
     def test_table(self):
         self.assertEqual(str(Event._meta.db_table), 'event')
-
 
 class IndexTest(TestCase):
     def test_view_url_accessible_by_name(self):
