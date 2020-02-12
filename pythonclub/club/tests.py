@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Meeting, MeetingMinutes, Resource, Event
+from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
 
@@ -44,6 +44,17 @@ class ResourceTest(TestCase):
 
     def test_table(self):
         self.assertEqual(str(Resource._meta.db_table), 'resource')
+
+    def setUp(self):
+        self.user=User.objects.create(username='Steve')
+        self.resource=Resource(resourceName='Django Models', resourceType='offical Django documentation', url='https://docs.djangoproject.com/en/3.0/topics/db/models/', dateEntered='2020-01-23', userID=self.user, description='This is offical documentation on creating Django Models')
+    
+    def test_string_user(self):
+        self.assertEqual(str(self.user), self.resource.userID.get_username())
+
+    def test_string_url(self):
+        url = self.resource.url
+        self.assertEqual(str(url), 'https://docs.djangoproject.com/en/3.0/topics/db/models/')
 
 class EventTest(TestCase):
     def test_string(self):
