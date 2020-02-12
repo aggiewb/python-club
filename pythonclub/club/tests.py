@@ -35,7 +35,16 @@ class EventTest(TestCase):
 
     def test_table(self):
         self.assertEqual(str(Event._meta.db_table), 'event')
-        
+
+class MeetingDetailsTest(TestCase):
+    def setUp(self):
+       meetingDetails=Meeting(agenda='Voting on new club board members', location='Community Center', meetingDate='2020-06-23', meetingTime='03:00 pm')
+       return meetingDetails
+    
+    def test_type(self):
+        meetingDetails = self.setUp()
+        self.assertEqual(str(meetingDetails.agenda), 'Voting on new club board members')
+
 class IndexTest(TestCase):
     def test_view_url_accessible_by_name(self):
         response = self.client.get(reverse('index'))
