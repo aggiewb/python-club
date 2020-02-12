@@ -20,6 +20,15 @@ class MeetingTest(TestCase):
         meeting = self.setUp()
         self.assertEqual(str(meeting.agenda), 'Voting on new club board members')
 
+    def test_string_location(self):
+        meeting=self.setUp()
+        self.assertEqual(str(meeting.location), 'Community Center')
+    
+    def test_string_date_time(self):
+        meeting=self.setUp()
+        self.assertEqual(str(meeting.meetingTime), '03:00 pm')
+        self.assertEqual(str(meeting.meetingDate), '2020-06-23')
+
 class MeetingMinutesTest(TestCase):
     def test_string(self):
         minutesText=MeetingMinutes(minutesText='Susie Sue was voted in as board president')
