@@ -27,11 +27,14 @@ def newMeeting(request):
     meeting_form=MeetingForm
     minutes_form=MeetingMinutesForm
     if request.method=='POST':
-        form=MeetingForm(request.POST)
-        if form.is_valid():
-            post=form.save(commit=True)
-            post.save()
+        meeting_form=MeetingForm(request.POST)
+        minutes_form=MeetingMinutesForm(request.POST)
+        if meeting_form.is_valid() and minutes_form.is_valid():
+            meetingPost=meeting_form.save(commit=True)
+            meetingPost.save()
             meeting_form=MeetingForm()
+            minutesPost=minutes_form.save(commit=True)
+            minutesPost.save()
             minutes_form=MeetingMinutesForm()
     else:
         meeting_form=MeetingForm()
