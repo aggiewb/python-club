@@ -32,5 +32,5 @@ def newMeeting(request):
             post.save()
             form=MeetingForm()
     else:
-        form=ProductForm()
-    return render(request, 'club/newmeeting.html', {'meeting': meeting}) 
+        form=MeetingForm()
+    return render(request, 'club/newmeeting.html', {'form': form}) 
