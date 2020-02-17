@@ -24,25 +24,16 @@ def event(request):
     return render(request, 'club/event.html', {'event' : event})
 
 def newMeeting(request):
-    form=MeetingForm
+    meeting_form=MeetingForm
+    minutes_form=MeetingMinutesForm
     if request.method=='POST':
         form=MeetingForm(request.POST)
         if form.is_valid():
             post=form.save(commit=True)
             post.save()
-            form=MeetingForm()
+            meeting_form=MeetingForm()
+            minutes_form=MeetingMinutesForm()
     else:
-        form=MeetingForm()
-    return render(request, 'club/newmeeting.html', {'form': form})
-
-def newMeetingMinutes(request):
-    form=MeetingMinutesForm
-    if request.method=='POST':
-        form=MeetingMinutesForm(request.POST)
-        if form.is_valid():
-            post=form.save(commit=True)
-            post.save()
-            form=MeetingMinutesForm()
-    else:
-        form=MeetingMinutesForm()
-    return render(request, 'club/newmeeting.html', {'form': form}) 
+        meeting_form=MeetingForm()
+        minutes_form=MeetingMinutesForm()
+    return render(request, 'club/newmeeting.html', {'meeting_form': meeting_form, 'minutes_form': minutes_form})
