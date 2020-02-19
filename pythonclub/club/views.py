@@ -20,4 +20,10 @@ def resource(request):
 
 def event(request):
     event = Event.objects.all()
-    return render(request, 'club/event.html', {'event' : event}) 
+    return render(request, 'club/event.html', {'event' : event})
+
+def loginmessage(request):
+    return render(request, 'club/loginmessage.html')
+
+def logoutmessage(request):
+    return render(request, 'club/logoutmessage.html')
