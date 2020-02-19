@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Meeting, MeetingMinutes, Resource, Event
+from django.contrib.auth.decorator import login_required
 
 # Create your views here.
 def index (request):
