@@ -2,7 +2,7 @@ from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
-from .form import MeetingForm, ResourceForm
+from .forms import MeetingForm, ResourceForm
 
 
 class MeetingTest(TestCase):
@@ -93,7 +93,10 @@ class MeetingDetailsViewTest(TestCase):
         response = self.client.get(reverse('meeting_details', args=(self.meeting.id,)))
         self.assertEqual(response.status_code, 200)
 
-
+class MeetingFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        form=MeetingForm(data={'meetingTitle': "test", 'meetingDate': "2020-02-18", 'meetingTime': "13:00", 'location': "community center", 'agenda': "django"})
+        self.assertTrue(form.is_valid())
 
 
 
