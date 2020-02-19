@@ -22,8 +22,8 @@ def event(request):
     event = Event.objects.all()
     return render(request, 'club/event.html', {'event' : event})
 
-def loginmessage(request):
+def loginMessage(request):
     return render(request, 'club/loginmessage.html')
 
-def logoutmessage(request):
+def logoutMessage(request):
     return render(request, 'club/logoutmessage.html')
