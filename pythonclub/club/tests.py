@@ -2,6 +2,7 @@ from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
+from .form import MeetingForm, ResourceForm
 
 
 class MeetingTest(TestCase):
@@ -91,6 +92,8 @@ class MeetingDetailsViewTest(TestCase):
     def test_meeting_details_success(self):
         response = self.client.get(reverse('meeting_details', args=(self.meeting.id,)))
         self.assertEqual(response.status_code, 200)
+
+
 
 
 
