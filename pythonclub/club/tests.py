@@ -98,6 +98,11 @@ class MeetingFormTest(TestCase):
         form=MeetingForm(data={'meetingTitle': "test", 'meetingDate': "2020-02-18", 'meetingTime': "13:00", 'location': "community center", 'agenda': "django"})
         self.assertTrue(form.is_valid())
 
+class ResourceFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        form=ResourceForm(data={'resourceName': "Django", 'resourceType': "Testing in Django", 'url': "https://docs.djangoproject.com/en/3.0/topics/testing/", 'dateEntered': "2020-06-23", 'userID': "user", 'description': "Testing in Django"})
+        self.assertTrue(form.is_valid())
+
 
 
 
