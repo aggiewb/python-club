@@ -38,9 +38,9 @@ def newMeeting(request):
 def newResource(request):
     resource=ResourceForm
     if request.method=='POST':
-        resource==ResourceForm(request.POST)
+        resource=ResourceForm(request.POST)
         if resource.is_valid():
-            resourcePost=meeting_form.save(commit=True)
+            resourcePost=resource.save(commit=True)
             resourcePost.save()
             resource=ResourceForm()
     else:
