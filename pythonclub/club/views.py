@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Meeting, MeetingMinutes, Resource, Event
-from .forms import MeetingForm, MeetingMinutesForm
+from .forms import MeetingForm, ResourceForm
 
 # Create your views here.
 def index (request):
@@ -34,3 +34,4 @@ def newMeeting(request):
     else:
         meeting_form=MeetingForm()
     return render(request, 'club/newmeeting.html', {'meeting_form': meeting_form})
+
