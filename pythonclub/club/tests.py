@@ -110,6 +110,11 @@ class ResourceFormTest(TestCase):
         form=ResourceForm(data={'resourceName': "Django", 'resourceType': "Testing in Django", 'url': "https://docs.djangoproject.com/en/3.0/topics/testing/", 'dateEntered': "2020-06-23", 'userID': user, 'description': "Testing in Django"})
         self.assertTrue(form.is_valid())
 
+    def test_typeform_empty(self):
+        form=ResourceForm(data={'resourceName': "", 'resourceType': "", 'url': "", 'dateEntered': "", 'userID': "", 'description': ""})
+        self.assertFalse(form.is_valid())
+
+
 
 
 
