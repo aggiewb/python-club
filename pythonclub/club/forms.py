@@ -6,7 +6,7 @@ class MeetingForm(forms.ModelForm):
         model=Meeting
         fields='__all__'
 
-class MeetingMinutesForm(forms.ModelForm):
+class ResourceForm(forms.ModelForm):
     class Meta:
-        model=MeetingMinutes
-        fields= ['attendance', 'minutesText']
+        model=Resource
+        fields= '__all__'
