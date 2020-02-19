@@ -100,7 +100,9 @@ class MeetingFormTest(TestCase):
 
 class ResourceFormTest(TestCase):
     def test_typeform_is_valid(self):
-        form=ResourceForm(data={'resourceName': "Django", 'resourceType': "Testing in Django", 'url': "https://docs.djangoproject.com/en/3.0/topics/testing/", 'dateEntered': "2020-06-23", 'userID': "user", 'description': "Testing in Django"})
+        user = User.objects.create(pk=1).pk
+        
+        form=ResourceForm(data={'resourceName': "Django", 'resourceType': "Testing in Django", 'url': "https://docs.djangoproject.com/en/3.0/topics/testing/", 'dateEntered': "2020-06-23", 'userID': user, 'description': "Testing in Django"})
         self.assertTrue(form.is_valid())
 
 
