@@ -97,6 +97,11 @@ class MeetingFormTest(TestCase):
     def test_typeform_is_valid(self):
         form=MeetingForm(data={'meetingTitle': "test", 'meetingDate': "2020-02-18", 'meetingTime': "13:00", 'location': "community center", 'agenda': "django"})
         self.assertTrue(form.is_valid())
+    
+    def test_typeform_empty(self):
+        form=MeetingForm(data={'meetingTitle': "", 'meetingDate': "", 'meetingTime': "", 'location': "", 'agenda': ""})
+        self.assertFalse(form.is_valid())
+
 
 class ResourceFormTest(TestCase):
     def test_typeform_is_valid(self):
