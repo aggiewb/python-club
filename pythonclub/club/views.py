@@ -35,3 +35,15 @@ def newMeeting(request):
         meeting_form=MeetingForm()
     return render(request, 'club/newmeeting.html', {'meeting_form': meeting_form})
 
+def newResource(request):
+    resource=ResourceForm
+    if request.method=='POST':
+        resource==ResourceForm(request.POST)
+        if resource.is_valid():
+            resourcePost=meeting_form.save(commit=True)
+            resourcePost.save()
+            resource=ResourceForm()
+    else:
+        resource=ResourceForm()
+    return render(request, 'club/newresource.html', {'resource': resource})
+
