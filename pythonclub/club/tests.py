@@ -2,6 +2,7 @@ from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
+from .forms import MeetingForm, ResourceForm
 
 
 class MeetingTest(TestCase):
@@ -91,6 +92,28 @@ class MeetingDetailsViewTest(TestCase):
     def test_meeting_details_success(self):
         response = self.client.get(reverse('meeting_details', args=(self.meeting.id,)))
         self.assertEqual(response.status_code, 200)
+
+class MeetingFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        form=MeetingForm(data={'meetingTitle': "test", 'meetingDate': "2020-02-18", 'meetingTime': "13:00", 'location': "community center", 'agenda': "django"})
+        self.assertTrue(form.is_valid())
+    
+    def test_typeform_empty(self):
+        form=MeetingForm(data={'meetingTitle': "", 'meetingDate': "", 'meetingTime': "", 'location': "", 'agenda': ""})
+        self.assertFalse(form.is_valid())
+
+
+class ResourceFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        user = User.objects.create(pk=1).pk
+        
+        form=ResourceForm(data={'resourceName': "Django", 'resourceType': "Testing in Django", 'url': "https://docs.djangoproject.com/en/3.0/topics/testing/", 'dateEntered': "2020-06-23", 'userID': user, 'description': "Testing in Django"})
+        self.assertTrue(form.is_valid())
+
+    def test_typeform_empty(self):
+        form=ResourceForm(data={'resourceName': "", 'resourceType': "", 'url': "", 'dateEntered': "", 'userID': "", 'description': ""})
+        self.assertFalse(form.is_valid())
+
 
 
 
