@@ -116,13 +116,21 @@ class ResourceFormTest(TestCase):
 
 class NewMeetingAuthTest(TestCase):
     def setUp(self):
-        self.test_user=User.object.create_user(username='testuser1', password='P@ssw0rd1')
+        self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
         self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
+    
+    def test_redirect_if_not_logged_in(self):
+        response=self.client.get(reverse('newmeeting'))
+        self.assertRedirects(response, '/accounts/login/?next=/club/newMeeting/')
 
 class NewResourceAuthTest(TestCase):
     def setUp(self):
-        self.test_user= User.object.create_user(username='testuser2', password='P@ssw0rd2')
-        self.resource= Resource.objects.create(resourceName='Django Models', resourceType='offical Django documentation', url='https://docs.djangoproject.com/en/3.0/topics/db/models/', dateEntered='2020-01-23', userID=self.user, description='This is offical documentation on creating Django Models')
+        self.test_user= User.objects.create_user(username='testuser2', password='P@ssw0rd2')
+        self.resource= Resource.objects.create(resourceName='Django Models', resourceType='offical Django documentation', url='https://docs.djangoproject.com/en/3.0/topics/db/models/', dateEntered='2020-01-23', userID=self.test_user, description='This is offical documentation on creating Django Models')
+    
+    def test_redirect_if_not_logged_in(self):
+        response=self.client.get(reverse('newresource'))
+        self.assertRedirects(response, '/accounts/login/?next=/club/newResource/')
 
 
 
