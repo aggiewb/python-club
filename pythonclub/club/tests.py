@@ -138,6 +138,13 @@ class NewResourceAuthTest(TestCase):
     def test_redirect_if_not_logged_in(self):
         response=self.client.get(reverse('newresource'))
         self.assertRedirects(response, '/accounts/login/?next=/club/newResource/')
+    
+    def test_Logged_in_uses_correct_template(self):
+        login=self.client.login(username='testuser2', password='P@ssw0rd2')
+        response=self.client.get(reverse('newresource'))
+        self.assertEqual(str(response.context['user']), 'testuser2')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'club/newresource.html')
 
 
 
