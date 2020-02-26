@@ -2,7 +2,7 @@ from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
-from .forms import MeetingForm, ResourceForm
+from .forms import MeetingForm, ResourceForm, MeetingMinutesForm
 
 
 class MeetingTest(TestCase):
@@ -113,6 +113,18 @@ class ResourceFormTest(TestCase):
     def test_typeform_empty(self):
         form=ResourceForm(data={'resourceName': "", 'resourceType': "", 'url': "", 'dateEntered': "", 'userID': "", 'description': ""})
         self.assertFalse(form.is_valid())
+
+class MeetingMinutesFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        meetingID=Meeting.objects.create(pk=1).pk
+        user=User.objects.create(username='Aggie')
+        
+        form=MeetingMinutesFormTest(data={'meetingID': meetingID , 'attendance': user, 'minutesText': 'Test'})
+        self.assertTrue(form.is_valid())
+    
+    def test_typeform_empty(self):
+        form=MeetingMinutesFormTest(data={'meetingID': "" , 'attendance': "", 'minutesText': ""})
+
 
 class NewMeetingAuthTest(TestCase):
     def setUp(self):
