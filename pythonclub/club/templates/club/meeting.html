@@ -6,7 +6,6 @@
         <th>Meeting Title</th>
         <th>Date</th>
     </tr>
-    <!--Add link for meeting minutes form add -->
     {% for data in meeting %}
     <tr>
         <td><a href="{% url 'meeting_details' id=data.id %}">{{ data.meetingTitle }}</td>
