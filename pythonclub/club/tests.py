@@ -102,7 +102,6 @@ class MeetingFormTest(TestCase):
         form=MeetingForm(data={'meetingTitle': "", 'meetingDate': "", 'meetingTime': "", 'location': "", 'agenda': ""})
         self.assertFalse(form.is_valid())
 
-
 class ResourceFormTest(TestCase):
     def test_typeform_is_valid(self):
         user=User.objects.create(pk=1).pk
@@ -124,8 +123,8 @@ class MeetingMinutesFormTest(TestCase):
     
     def test_typeform_empty(self):
         form=MeetingMinutesFormTest(data={'meetingID': "" , 'attendance': "", 'minutesText': ""})
-
-
+        self.assertFalse(form.is_valid())
+        
 class NewMeetingAuthTest(TestCase):
     def setUp(self):
         self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
