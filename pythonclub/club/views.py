@@ -61,7 +61,7 @@ def newMeetingMinutes(request):
     form=MeetingMinutesForm
     if request.method=='POST':
         form=MeetingMinutesForm(request.POST)
-        if form.us_valid():
+        if form.is_valid():
             post=form.save(commit=True)
             post.save()
             form=MeetingMinutesForm()
