@@ -13,4 +13,4 @@ class ResourceForm(forms.ModelForm):
 
 class MeetingMinutesForm(forms.ModelForm):
         model=MeetingMinutes
-        fields= ['attendance', 'minutesText']
+        fields= '__all__'
