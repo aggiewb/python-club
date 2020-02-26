@@ -67,5 +67,5 @@ def newMeetingMinutes(request):
             post.save()
             form=MeetingMinutesForm()
     else:form=MeetingMinutesForm()
-    return render(request, 'club/newmeeting.html', {'form': form}) 
+    return render(request, 'club/newmeeting.html', {'minutes_form': minutes_form}) 
 
