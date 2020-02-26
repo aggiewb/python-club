@@ -58,6 +58,7 @@ def newResource(request):
 
 @login_required
 def newMeetingMinutes(request):
+    #reference to Meeting primary key
     form=MeetingMinutesForm
     if request.method=='POST':
         form=MeetingMinutesForm(request.POST)
