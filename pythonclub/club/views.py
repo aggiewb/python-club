@@ -59,13 +59,13 @@ def newResource(request):
 @login_required
 def newMeetingMinutes(request):
     #reference to Meeting primary key
-    form=MeetingMinutesForm
+    minutes=MeetingMinutesForm
     if request.method=='POST':
-        form=MeetingMinutesForm(request.POST)
-        if form.is_valid():
-            post=form.save(commit=True)
-            post.save()
-            form=MeetingMinutesForm()
-    else:form=MeetingMinutesForm()
-    return render(request, 'club/newmeeting.html', {'minutes_form': minutes_form}) 
+        minutes=MeetingMinutesForm(request.POST)
+        if minutes.is_valid():
+            minutesPost=minutes.save(commit=True)
+            minutesPost.save()
+            minutes=MeetingMinutesForm()
+    else:minutes=MeetingMinutesForm()
+    return render(request, 'club/newmeetingminutes.html', {'minutes': minutes}) 
 
