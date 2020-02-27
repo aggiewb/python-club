@@ -115,16 +115,15 @@ class ResourceFormTest(TestCase):
 
 class MeetingMinutesFormTest(TestCase):
     def test_typeform_is_valid(self):
-        meetingID=Meeting.objects.create(pk=1).pk
-        user=User.objects.create(username='Aggie')
-        
-        form=MeetingMinutesFormTest(data={'meetingID': meetingID , 'attendance': user, 'minutesText': 'Test'})
+        user=User.objects.create(username='Steve')
+        meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
+        form=MeetingMinutesForm(data={'meetingID': meeting.id, 'attendance': user, 'minutesText': 'Test'})
         self.assertTrue(form.is_valid())
-    
+
     def test_typeform_empty(self):
-        form=MeetingMinutesFormTest(data={'meetingID': "" , 'attendance': "", 'minutesText': ""})
+        form=MeetingMinutesForm(data={'meetingID': "" , 'attendance': "", 'minutesText': ""})
         self.assertFalse(form.is_valid())
-        
+
 class NewMeetingAuthTest(TestCase):
     def setUp(self):
         self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
