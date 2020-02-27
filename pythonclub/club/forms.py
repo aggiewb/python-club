@@ -10,3 +10,8 @@ class ResourceForm(forms.ModelForm):
     class Meta:
         model=Resource
         fields= '__all__'
+
+class MeetingMinutesForm(forms.ModelForm):
+    class Meta:
+        model=MeetingMinutes
+        fields= '__all__'

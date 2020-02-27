@@ -2,7 +2,7 @@ from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event, User
 from django.urls import reverse
 from .views import index, meeting, meetingDetails, resource, event
-from .forms import MeetingForm, ResourceForm
+from .forms import MeetingForm, ResourceForm, MeetingMinutesForm
 
 
 class MeetingTest(TestCase):
@@ -102,7 +102,6 @@ class MeetingFormTest(TestCase):
         form=MeetingForm(data={'meetingTitle': "", 'meetingDate': "", 'meetingTime': "", 'location': "", 'agenda': ""})
         self.assertFalse(form.is_valid())
 
-
 class ResourceFormTest(TestCase):
     def test_typeform_is_valid(self):
         user=User.objects.create(pk=1).pk
@@ -112,6 +111,17 @@ class ResourceFormTest(TestCase):
 
     def test_typeform_empty(self):
         form=ResourceForm(data={'resourceName': "", 'resourceType': "", 'url': "", 'dateEntered': "", 'userID': "", 'description': ""})
+        self.assertFalse(form.is_valid())
+
+class MeetingMinutesFormTest(TestCase):
+    def test_typeform_is_valid(self):
+        user=User.objects.create(username='Steve')
+        meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
+        form=MeetingMinutesForm(data={'meetingID': meeting.id, 'attendance': user, 'minutesText': 'Test'})
+        self.assertTrue(form.is_valid())
+
+    def test_typeform_empty(self):
+        form=MeetingMinutesForm(data={'meetingID': "" , 'attendance': "", 'minutesText': ""})
         self.assertFalse(form.is_valid())
 
 class NewMeetingAuthTest(TestCase):
