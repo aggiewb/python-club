@@ -12,5 +12,6 @@ class ResourceForm(forms.ModelForm):
         fields= '__all__'
 
 class MeetingMinutesForm(forms.ModelForm):
+    class Meta:
         model=MeetingMinutes
         fields= '__all__'
