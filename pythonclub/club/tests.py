@@ -87,7 +87,7 @@ class EventViewTest(TestCase):
 
 class MeetingDetailsViewTest(TestCase):
     def setUp(self):
-        self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!') 
+        self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
 
     def test_meeting_details_success(self):
         response=self.client.get(reverse('meeting_details', args=(self.meeting.id,)))
@@ -114,10 +114,12 @@ class ResourceFormTest(TestCase):
         self.assertFalse(form.is_valid())
 
 class MeetingMinutesFormTest(TestCase):
+    def setUp(self):
+        self.user=User.objects.create(username='Steve')
+        self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
+
     def test_typeform_is_valid(self):
-        user=User.objects.create(username='Steve')
-        meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
-        form=MeetingMinutesForm(data={'meetingID': meeting.id, 'attendance': user, 'minutesText': 'Test'})
+        form=MeetingMinutesForm(data={'meetingID': self.meeting.id, 'attendance': self.user, 'minutesText': "Test"})
         self.assertTrue(form.is_valid())
 
     def test_typeform_empty(self):
