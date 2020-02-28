@@ -13,12 +13,16 @@ def meeting(request):
 
 def meetingDetails(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
-    meetingMinutes = MeetingMinutes.objects.get(meetingID=id)
-    
+    try:
+        meetingMinutes = MeetingMinutes.objects.get(meetingID=id)
+    except MeetingMinutes.DoesNotExist:
+        meetingMinutes = None
+
     details={
         'meeting': meeting,
         'meetingMinutes': meetingMinutes,
     }
+
     return render(request, 'club/meeting_details.html', context = details)
 
 def resource(request):
