@@ -13,7 +13,9 @@
 </p>
 <p>Minutes notes: {{ meetingMinutes.minutesText }}</p>
 
+{% if meetingMinutes == None %} 
 <a href="{% url 'newmeetingminutes' %}">Add meeting minutes</a>
+{% endif %}
 
 {% endblock %}
 
