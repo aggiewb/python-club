@@ -13,7 +13,8 @@ def meeting(request):
 
 def meetingDetails(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
-    meetingMinutes = MeetingMinutes.objects.filter(meetingID=id)
+    meetingMinutes = MeetingMinutes.objects.get(meetingID=id)
+    
     details={
         'meeting': meeting,
         'meetingMinutes': meetingMinutes,
@@ -62,7 +63,6 @@ def newResource(request):
 
 @login_required
 def newMeetingMinutes(request):
-    #reference to Meeting primary key
     minutes=MeetingMinutesForm
     if request.method=='POST':
         minutes=MeetingMinutesForm(request.POST)
