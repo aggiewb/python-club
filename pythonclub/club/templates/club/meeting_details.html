@@ -4,8 +4,18 @@
 <p>Time: {{ meeting.meetingTime }}</p>
 <p>Location: {{ meeting.location }}</p>
 <p>Agenda: {{ meeting.agenda }}</p>
-<p>Attendance: {{ meetingMinutes.attendance }}</p>
+<p>Attendance:
+    <ul>
+    {% for user in meetingMinutes.attendance.all %}
+            <li>{{ user }}</li>
+    {% endfor %}
+    </ul>
+</p>
 <p>Minutes notes: {{ meetingMinutes.minutesText }}</p>
+
+{% if meetingMinutes == None %} 
+<a href="{% url 'newmeetingminutes' %}">Add meeting minutes</a>
+{% endif %}
 
 {% endblock %}
 
