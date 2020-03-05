@@ -115,11 +115,14 @@ class ResourceFormTest(TestCase):
 
 class MeetingMinutesFormTest(TestCase):
     def setUp(self):
-        self.user=User.objects.create(username='Steve')
+        User.objects.create(username='Steve')
+        User.objects.create(username='Aggie')
+        User.objects.create(username='Craig')
         self.meeting=Meeting.objects.create(meetingTitle='Annual PyDay', meetingDate='2020-03-14', meetingTime='10:00 AM', location='Elysian Brewery', agenda='The theme for 2020 is Django!')
 
     def test_typeform_is_valid(self):
-        form=MeetingMinutesForm(data={'meetingID': self.meeting.id, 'attendance': self.user, 'minutesText': "Test"})
+        users = User.objects.all()
+        form=MeetingMinutesForm(data={'meetingID': self.meeting.id, 'attendance': users, 'minutesText': 'This is a test.'})
         self.assertTrue(form.is_valid())
 
     def test_typeform_empty(self):
